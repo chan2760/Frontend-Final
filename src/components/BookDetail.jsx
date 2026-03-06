@@ -7,6 +7,7 @@ export function BookDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { user } = useUser();
+  // MODIFIED: validate Mongo ObjectId format to prevent /api/book/[id] bad requests.
   const isValidBookId = typeof id === "string" && /^[a-f\d]{24}$/i.test(id);
 
   const [form, setForm] = useState({

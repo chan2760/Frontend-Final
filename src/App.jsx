@@ -20,6 +20,7 @@ function ProtectedPage({ children }) {
       return undefined;
     }
 
+    // MODIFIED: poll pending INIT requests so admin sees live count on navbar.
     let active = true;
 
     async function fetchPendingCount() {

@@ -118,6 +118,7 @@ export default function BookBorrow() {
       setRequests(nextRequests);
 
       if (isAdmin) {
+        // MODIFIED: detect newly created INIT requests and show admin notifications.
         const nextPendingRequests = nextRequests.filter(
           (item) => item.requestStatus === "INIT"
         );
