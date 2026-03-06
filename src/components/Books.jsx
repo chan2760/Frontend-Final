@@ -11,7 +11,6 @@ export default function Books() {
     title: "",
     author: "",
   });
-  const [includeDeleted, setIncludeDeleted] = useState(false);
   const [books, setBooks] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
@@ -33,9 +32,6 @@ export default function Books() {
     }
     if (filters.author.trim()) {
       searchParams.set("author", filters.author.trim());
-    }
-    if (isAdmin && includeDeleted) {
-      searchParams.set("includeDeleted", "true");
     }
 
     const query = searchParams.toString();
@@ -67,7 +63,7 @@ export default function Books() {
   useEffect(() => {
     fetchBooks();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [includeDeleted, isAdmin]);
+  }, [isAdmin]);
 
   async function onCreateBook(event) {
     event.preventDefault();
@@ -137,16 +133,6 @@ export default function Books() {
             Search
           </button>
         </div>
-        {isAdmin && (
-          <label className="checkbox-inline">
-            <input
-              type="checkbox"
-              checked={includeDeleted}
-              onChange={(event) => setIncludeDeleted(event.target.checked)}
-            />
-            Show deleted books
-          </label>
-        )}
       </section>
 
       {isAdmin && (
