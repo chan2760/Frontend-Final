@@ -42,3 +42,7 @@ npm run build
 docker build -t frontend-final .
 docker run -d -p 8080:80 --name frontend-final frontend-final
 ```
+
+
+## SPA Routing Note
+This repo includes `vercel.json` so React Router paths (for example `/books/123`) work on Vercel.
